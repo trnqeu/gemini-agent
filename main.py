@@ -39,7 +39,8 @@ def generate_content(client, messages, verbose):
 
     response = client.models.generate_content(
         model='gemini-2.5-flash',
-        contents = messages
+        contents = messages,
+        config=types.GenerateContentConfig(system_instruction=system_prompt)
     )
 
     if verbose:
