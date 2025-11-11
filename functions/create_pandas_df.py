@@ -11,7 +11,7 @@ def create_df(csv_path):
 
 
 
-schema_create_df = types.FunctionsDeclaration(
+schema_create_df = types.FunctionDeclaration(
     name="create_df",
     description="Creates a Pandas dataframe from a csv file.",
     parameters=types.Schema(
