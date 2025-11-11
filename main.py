@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 from google import genai
 from google.genai import types
 import sys
+from prompts import system_prompt
 
 def main():
     load_dotenv()
@@ -46,9 +47,6 @@ def generate_content(client, messages, verbose):
         print("Response tokens:", response.usage_metadata.candidates_token_count)
     print("Response:")
     print(response.text)
-
-        
-
 
 if __name__=="__main__":
     main()
