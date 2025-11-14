@@ -1,7 +1,7 @@
 import pandas as pd
 from google.genai import types
 
-dataframe_storage = {}
+dataframes_storage = {}
 
 def create_df(csv_path: str, df_name: str, delimiter: str = ','):
     """
@@ -10,7 +10,7 @@ def create_df(csv_path: str, df_name: str, delimiter: str = ','):
     """
     try:
         df = pd.read_csv(csv_path)
-        dataframe_storage[df_name] = df
+        dataframes_storage[df_name] = df
         return f"DataFrame '{df_name}' creato con successo da '{csv_path}'. Shape: {df.shape}"
     except Exception as e:
         f"Error creating dataframe: {e}"

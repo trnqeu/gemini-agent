@@ -2,6 +2,8 @@ from google.genai import types
 
 from functions.get_files_info import get_files_info, schema_get_files_info
 from functions.create_pandas_df import create_df, schema_create_df
+from functions.execute_pandas_code import schema_execute_pandas_code
+
 from config import WORKING_DIR
 
 
@@ -9,6 +11,7 @@ available_functions = types.Tool(
     function_declarations=[
         schema_get_files_info,
         schema_create_df,
+        schema_execute_pandas_code
     ]
 )
 
