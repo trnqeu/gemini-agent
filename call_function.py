@@ -2,7 +2,7 @@ from google.genai import types
 
 from functions.get_files_info import get_files_info, schema_get_files_info
 from functions.create_pandas_df import create_df, schema_create_df
-from functions.execute_pandas_code import schema_execute_pandas_code
+from functions.execute_pandas_code import execute_pandas_code, schema_execute_pandas_code
 
 from config import WORKING_DIR
 
@@ -24,7 +24,8 @@ def call_function(function_call_part, verbose=False):
         print(f" - Calling function: {function_call_part.name}")
     function_map = {
         "get_files_info": get_files_info,
-        "create_df": create_df 
+        "create_df": create_df,
+        "execute_pandas_code": execute_pandas_code
     }
     function_name = function_call_part.name
     if function_name not in function_map:
