@@ -3,13 +3,13 @@ from google.genai import types
 
 dataframes_storage = {}
 
-def create_df(csv_path: str, df_name: str, delimiter: str = ','):
+def create_df(csv_path: str, df_name: str, delimiter: str = ',', encoding: str = 'utf-8'):
     """
     Creates a DataFrame Pandas from a CSV file and saves it in memory with
     a specific name.
     """
     try:
-        df = pd.read_csv(csv_path, delimiter = delimiter)
+        df = pd.read_csv(csv_path, delimiter = delimiter, encoding = encoding)
         dataframes_storage[df_name] = df
         return f"DataFrame '{df_name}' creato con successo da '{csv_path}'. Shape: {df.shape}"
     except Exception as e:
@@ -32,6 +32,10 @@ schema_create_df = types.FunctionDeclaration(
             "delimiter": types.Schema(
                 type=types.Type.STRING,
                 description="The delimiter that separates the csv file's columns (e.g. ',', ';')"
+            ),
+            "encoding": types.Schema(
+                type=types.Type.STRING,
+                description="The encoding of the file. Defaults to 'utf-8'. Use 'latin-1' or 'cp1252' for common legacy files."
             )
         },
         required=["csv_path", "df_name", "delimiter"]
