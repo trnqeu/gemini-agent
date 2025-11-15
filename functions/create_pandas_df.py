@@ -9,11 +9,11 @@ def create_df(csv_path: str, df_name: str, delimiter: str = ','):
     a specific name.
     """
     try:
-        df = pd.read_csv(csv_path)
+        df = pd.read_csv(csv_path, delimiter = delimiter)
         dataframes_storage[df_name] = df
         return f"DataFrame '{df_name}' creato con successo da '{csv_path}'. Shape: {df.shape}"
     except Exception as e:
-        f"Error creating dataframe: {e}"
+        return f"Error creating dataframe: {e}"
 
 schema_create_df = types.FunctionDeclaration(
     name="create_df",
