@@ -3,6 +3,7 @@ from google.genai import types
 from functions.get_files_info import get_files_info, schema_get_files_info
 from functions.create_pandas_df import create_df, schema_create_df
 from functions.execute_pandas_code import execute_pandas_code, schema_execute_pandas_code
+from functions.compare_articles import compare_articles, schema_compare_articles 
 
 from config import WORKING_DIR
 
@@ -11,7 +12,8 @@ available_functions = types.Tool(
     function_declarations=[
         schema_get_files_info,
         schema_create_df,
-        schema_execute_pandas_code
+        schema_execute_pandas_code,
+        schema_compare_articles
     ]
 )
 
@@ -19,7 +21,8 @@ def call_function(function_call_part, verbose=False):
     function_map = {
         "get_files_info": get_files_info,
         "create_df": create_df,
-        "execute_pandas_code": execute_pandas_code
+        "execute_pandas_code": execute_pandas_code,
+        "compare_articles": compare_articles 
     }
     
     function_name = function_call_part.name

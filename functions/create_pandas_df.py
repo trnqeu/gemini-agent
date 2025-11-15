@@ -3,13 +3,13 @@ from google.genai import types
 
 dataframes_storage = {}
 
-def create_df(csv_path: str, df_name: str, delimiter: str = ',', encoding: str = 'utf-8'):
+def create_df(csv_path: str, df_name: str, delimiter: str = ',', encoding: str = 'utf-8', dtype=str):
     """
     Creates a DataFrame Pandas from a CSV file and saves it in memory with
     a specific name.
     """
     try:
-        df = pd.read_csv(csv_path, delimiter = delimiter, encoding = encoding)
+        df = pd.read_csv(csv_path, delimiter = delimiter, encoding = encoding, low_memory=False, index_col=False)
         dataframes_storage[df_name] = df
         return f"DataFrame '{df_name}' creato con successo da '{csv_path}'. Shape: {df.shape}"
     except Exception as e:
