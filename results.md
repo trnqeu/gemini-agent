@@ -34,10 +34,17 @@ L'agente non capisce che tipo di confronto deve fare
 
 ## Non trova l'articolo corrispondente
 
-
 **Soluzione**-> potenziamento del sistem prompt, creando una sequenza di comandi obbligatoria.
 
  Generate and execute **a single Python script** using the `execute_pandas_code` tool. This script must:
     a. Create new, cleaned key columns in both DataFrames. For example:
        `df_source['cleaned_articolo'] = df_source['Articolo'].astype(str).str.strip().str.upper()`
        `df_pimcore['cleaned_dctitle'] = df_pimcore['dcTitle'].astype(str).str.strip().str.upper()`
+
+
+Cosa ha davvero funzionato:
+
+```
+low_memory=False,
+index_col=False
+```
